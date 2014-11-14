@@ -28,10 +28,6 @@ public class Candidate implements Comparable<Candidate> {
 	 * @return The candidate's total points.
 	 */
 	public int totalPoints() {
-		// Return the total points of the candidate.
-		
-
-		
 		int total = 0;
 		
 		for (int i = 0; i < prefs.length; i++) {
@@ -56,21 +52,21 @@ public class Candidate implements Comparable<Candidate> {
 	public int compareTo(Candidate otherCandidate) {
 		if (this.totalPoints() > otherCandidate.totalPoints()) { return 1; }
 		if (this.totalPoints() < otherCandidate.totalPoints()) { return -1; }
-		// point score is equal -- begin checking separate preference votes
-		else {
-			for (int i = 0; i < this.prefs.length; i++) {
-				if (this.prefs[i] > otherCandidate.prefs[i]) { return 1; }
-				if (this.prefs[i] > otherCandidate.prefs[i]) { return -1; }
-				// if this level of preference votes was equal,
-				// continue to next level
-				// TODO: recursion instead? but we need to check total
-				//       points first, so the recursion would be in a
-				//       helper function
-				else continue;
-			}
-			// if we got to the end of the preference rankings, the
-			// candidates are exactly the same
-			return 0;
+		
+		// point score is equal -- begin checking separate preference
+		// votes
+		for (int i = 0; i < this.prefs.length; i++) {
+			if (this.prefs[i] > otherCandidate.prefs[i]) { return 1; }
+			if (this.prefs[i] < otherCandidate.prefs[i]) { return -1; }
+			// if this level of preference votes was equal,
+			// continue to next level
+			// TODO: recursion instead? but we need to check total
+			//       points first, so the recursion would be in a
+			//       helper function
+			else continue;
 		}
+		// if we got to the end of the preference rankings, the
+		// candidates are exactly the same
+		return 0;
 	}
 }
