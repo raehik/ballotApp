@@ -1,6 +1,7 @@
 package ballotApp;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -214,7 +215,7 @@ public class Ballot {
 	public void endElection() {
 		// TODO: functionise??
 		// sort by point score, low -> high
-		Arrays.sort(this.candidates);
+		Arrays.sort(this.candidates, Collections.reverseOrder());
 		// because we're only finding the winner, only check the first
 		// 2 for being identical
 		if (this.candidates[0].compareTo(this.candidates[1]) == 0) {
