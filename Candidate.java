@@ -1,4 +1,4 @@
-package novemberAssessment;
+package ballotApp;
 
 public class Candidate implements Comparable<Candidate> {
 

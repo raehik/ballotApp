@@ -1,4 +1,4 @@
-package novemberAssessment;
+package ballotApp;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
