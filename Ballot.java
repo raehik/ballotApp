@@ -105,8 +105,8 @@ public class Ballot {
 		}
 	}
 	
-	private void printOnPaper(String string) {
-		System.out.println("| " + string);
+	private String paperise(String string) {
+		return "| " + string;
 	}
 	
 	public void makeVote() {
@@ -136,13 +136,13 @@ public class Ballot {
 	public void voteSystem1() {
 		// print candidate names & associated number
 		for (int i = 0; i < this.candidates.length; i++) {
-			this.printOnPaper((i + 1) + ". [ ] " + this.candidates[i].name);
+			System.out.println(this.paperise((i + 1) + ". [ ] " + this.candidates[i].name));
 		}
-		this.printOnPaper("");
+		System.out.println(this.paperise(""));
 		
 		// instructions because not the clearest input system immediately
-		this.printOnPaper("Please enter the number of the associated candidate for each of your preferences.");
-		this.printOnPaper("");
+		System.out.println(this.paperise("Please enter the number of the associated candidate for each of your preferences."));
+		System.out.println(this.paperise(""));
 		
 		// Maps choices to candidates based on the order of this.candidates.
 		// Position is points, value is candidate.
@@ -176,12 +176,12 @@ public class Ballot {
 	public void voteSystem2() {
 		// print candidate names
 		for (int i = 0; i < this.candidates.length; i++) {
-			this.printOnPaper("[ ] " + this.candidates[i].name);
+			System.out.println(this.paperise("[ ] " + this.candidates[i].name));
 		}
-		this.printOnPaper("");
+		System.out.println(this.paperise(""));
 		
-		this.printOnPaper("Please enter your preference for each of the candidates.");
-		this.printOnPaper("");
+		System.out.println(this.paperise("Please enter your preference for each of the candidates."));
+		System.out.println(this.paperise(""));
 		
 		// Position is candidate, value is their rank.
 		// i.e. given {4, 2, 1, 3, 5}, the 4th candidate on the paper
@@ -191,7 +191,7 @@ public class Ballot {
 		int[] choices = new int[this.candidates.length];
 		
 		for (int i = 0; i < this.candidates.length; i++) {
-			choices[i] = this.promptPositiveInt("| Cand. " + (i + 1) + ", " + this.candidates[i].name + ": ");
+			choices[i] = this.promptPositiveInt(this.paperise("Cand. " + (i + 1) + ", " + this.candidates[i].name + ": ")) - 1;
 		}
 		
 		// TODO: show the current state
